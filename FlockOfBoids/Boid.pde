@@ -205,15 +205,15 @@ class Boid {
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
 
+    scale(4);
+    beginShape();
     for(Face face : this.rep.faces) {
       for(Edge edge : face.edges){
-        if(edge == null){
-          print("You're srewd\n");
-          continue;
-        }
-        print(edge.vertex1 + " " + edge.vertex2 + "\n");
+        vertex(edge.vertex1.x(), edge.vertex1.y(), edge.vertex1.z());
+        vertex(edge.vertex2.x(), edge.vertex2.y(), edge.vertex2.z());
       }
     }
+    endShape();
 
     popStyle();
   }
