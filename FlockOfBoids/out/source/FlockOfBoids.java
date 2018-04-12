@@ -65,6 +65,7 @@ Node avatar;
 boolean animate = true;
 
 public void setup() {
+  ObjRepresentation rep = new ObjRepresentation("cube.obj");
   s = loadShape("bird.obj");
   
   scene = new Scene(this);
@@ -396,6 +397,54 @@ public class Eye extends Node {
         lookAround(event);
     }
   }
+}
+class Face {
+    int vertex1, vertex2;
+
+    Face(int vertex1, int vertex2) {
+        this.vertex1 = vertex1;
+        this.vertex2 = vertex2;
+    }
+}
+class ObjRepresentation {    
+    ArrayList<Vector> vertices;
+    ArrayList<Face> faces;
+    String file;
+
+    ObjRepresentation(String file) {
+        this.file = file;
+        vertices = new ArrayList<Vector>();
+        faces = new ArrayList<Face>();
+        this.loadRepresentation();
+    }
+
+    private void loadRepresentation() {
+        BufferedReader bf = createReader(this.file); 
+        try{
+            String line;
+            while( (line = bf.readLine()) != null ) {
+                this.parseLine(line);
+            }
+            bf.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseLine(String line) {
+        String [] splitted = line.split(" ");
+        
+        if(splitted.length > 0) {
+            switch (splitted[0]) {
+                case "v":
+                    print("v found\n");
+                break;
+                case "f":
+                    print("f found\n");
+                break;
+            }
+        }   
+    }
 }
   public void settings() {  size(1000, 800, P3D); }
   static public void main(String[] passedArgs) {
