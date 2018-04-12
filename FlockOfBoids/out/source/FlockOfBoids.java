@@ -57,7 +57,6 @@ boolean avoidWalls = true;
 // 2. Only faces
 // 3. Only points
 int mode;
-PShape s;
 
 int initBoidNum = 900; // amount of boids to start the program with
 ArrayList<Boid> flock;
@@ -67,7 +66,7 @@ boolean animate = true;
 public void setup() {
   ObjRepresentation rep = new ObjRepresentation("cube.obj");
   rep.loadRepresentation();
-  s = loadShape("bird.obj");
+
   
   scene = new Scene(this);
   scene.setBoundingBox(new Vector(0, 0, 0), new Vector(flockWidth, flockHeight, flockDepth));
@@ -81,7 +80,7 @@ public void setup() {
   // create and fill the list of boids
   flock = new ArrayList();
   for (int i = 0; i < initBoidNum; i++)
-    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), s));
+    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep));
 }
 
 public void draw() {
@@ -161,12 +160,12 @@ class Boid {
   float sc = 3; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
-  PShape work;
+  ObjRepresentation rep;
   
 
 
-  Boid(Vector inPos, PShape s) {
-    work = s;
+  Boid(Vector inPos, ObjRepresentation rep) {
+    this.rep = rep;
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
     position = new Vector();
@@ -354,8 +353,16 @@ class Boid {
     // vertex(-3 * sc, 2 * sc, 0);
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
-    scale(0.05f);
-    shape(work);
+
+    for(Face face : this.rep.faces) {
+      for(Edge edge : face.edges){
+        if(edge == null){
+          print("You're srewd\n");
+          continue;
+        }
+        print(edge.vertex1 + " " + edge.vertex2 + "\n");
+      }
+    }
 
     popStyle();
   }
@@ -468,12 +475,12 @@ class ObjRepresentation {
     private void parseFace(String [] tokens){
         Edge [] edges = new Edge[3];
         
-        for(int i = 1 ; i < 3 ; i++) {
+        for(int i = 1 ; i <= 3 ; i++) {
             String [] vertexIndexes = tokens[i].split("//");
             int index1 = Integer.parseInt(vertexIndexes[0]) - 1;
             int index2 = Integer.parseInt(vertexIndexes[1]) - 1;
 
-            edges[i] = new Edge(vertices.get(index1), vertices.get(index2));
+            edges[i - 1] = new Edge(vertices.get(index1), vertices.get(index2));
         }
 
         Face face = new Face(edges);
