@@ -65,7 +65,7 @@ Node avatar;
 boolean animate = true;
 
 public void setup() {
-  s = loadShape("bird.obj");
+  s = loadShape("cube.obj");
   
   scene = new Scene(this);
   scene.setBoundingBox(new Vector(0, 0, 0), new Vector(flockWidth, flockHeight, flockDepth));
@@ -352,7 +352,7 @@ class Boid {
     // vertex(-3 * sc, 2 * sc, 0);
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
-    scale(0.05f);
+    scale(10);
     shape(work);
 
     popStyle();

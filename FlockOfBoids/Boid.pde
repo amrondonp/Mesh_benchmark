@@ -204,7 +204,7 @@ class Boid {
     // vertex(-3 * sc, 2 * sc, 0);
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
-    scale(0.05);
+    scale(10);
     shape(work);
 
     popStyle();

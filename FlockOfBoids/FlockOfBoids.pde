@@ -43,7 +43,7 @@ Node avatar;
 boolean animate = true;
 
 void setup() {
-  s = loadShape("bird.obj");
+  s = loadShape("cube.obj");
   size(1000, 800, P3D);
   scene = new Scene(this);
   scene.setBoundingBox(new Vector(0, 0, 0), new Vector(flockWidth, flockHeight, flockDepth));
