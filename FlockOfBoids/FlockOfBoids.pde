@@ -35,7 +35,6 @@ boolean avoidWalls = true;
 // 2. Only faces
 // 3. Only points
 int mode;
-PShape s;
 
 int initBoidNum = 900; // amount of boids to start the program with
 ArrayList<Boid> flock;
@@ -43,7 +42,9 @@ Node avatar;
 boolean animate = true;
 
 void setup() {
-  s = loadShape("cube.obj");
+  ObjRepresentation rep = new ObjRepresentation("cube.obj");
+  rep.loadRepresentation();
+
   size(1000, 800, P3D);
   scene = new Scene(this);
   scene.setBoundingBox(new Vector(0, 0, 0), new Vector(flockWidth, flockHeight, flockDepth));
@@ -57,7 +58,7 @@ void setup() {
   // create and fill the list of boids
   flock = new ArrayList();
   for (int i = 0; i < initBoidNum; i++)
-    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), s));
+    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep));
 }
 
 void draw() {
