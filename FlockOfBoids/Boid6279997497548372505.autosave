@@ -11,12 +11,10 @@ class Boid {
   float sc = 3; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
-  PShape work;
+  PShape works;
   
-
-
   Boid(Vector inPos, PShape s) {
-    work = s;
+    works = s;
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
     position = new Vector();
@@ -204,8 +202,7 @@ class Boid {
     // vertex(-3 * sc, 2 * sc, 0);
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
-    scale(0.05);
-    shape(work);
+    shape(works, 0, 0, 30, 8);
 
     popStyle();
   }
