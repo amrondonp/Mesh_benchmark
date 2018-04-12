@@ -7,7 +7,6 @@ class ObjRepresentation {
         this.file = file;
         vertices = new ArrayList<Vector>();
         faces = new ArrayList<Face>();
-        this.loadRepresentation();
     }
 
     private void loadRepresentation() {
@@ -17,6 +16,8 @@ class ObjRepresentation {
             while( (line = bf.readLine()) != null ) {
                 this.parseLine(line);
             }
+            print("Number of vertices: " + vertices.size() + "\n");
+            print("Number of faces " + faces.size() + "\n");
             bf.close();
         }catch (Exception e) {
             e.printStackTrace();
@@ -24,17 +25,42 @@ class ObjRepresentation {
     }
 
     private void parseLine(String line) {
-        String [] splitted = line.split(" ");
+        String [] splitted = line.split(" +");
         
         if(splitted.length > 0) {
             switch (splitted[0]) {
                 case "v":
-                    print("v found\n");
+                    parseVertex(splitted);
                 break;
                 case "f":
-                    print("f found\n");
+                    parseFace(splitted);
                 break;
             }
         }   
+    }
+
+    private void parseVertex(String [] tokens) {
+        Vector vertex = new Vector(
+            Float.parseFloat(tokens[1]),
+            Float.parseFloat(tokens[2]),
+            Float.parseFloat(tokens[3])
+        );
+
+        vertices.add(vertex);
+    }
+
+    private void parseFace(String [] tokens){
+        Edge [] edges = new Edge[3];
+        
+        for(int i = 1 ; i < 3 ; i++) {
+            String [] vertexIndexes = tokens[i].split("//");
+            int index1 = Integer.parseInt(vertexIndexes[0]) - 1;
+            int index2 = Integer.parseInt(vertexIndexes[1]) - 1;
+
+            edges[i] = new Edge(vertices.get(index1), vertices.get(index2));
+        }
+
+        Face face = new Face(edges);
+        faces.add(face);
     }
 }

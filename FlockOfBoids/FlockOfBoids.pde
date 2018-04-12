@@ -44,6 +44,7 @@ boolean animate = true;
 
 void setup() {
   ObjRepresentation rep = new ObjRepresentation("cube.obj");
+  rep.loadRepresentation();
   s = loadShape("bird.obj");
   size(1000, 800, P3D);
   scene = new Scene(this);
