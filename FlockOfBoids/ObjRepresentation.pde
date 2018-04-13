@@ -57,7 +57,7 @@ class ObjRepresentation {
             int index1 = Integer.parseInt(vertexIndexes[0]) - 1;
             int index2 = Integer.parseInt(vertexIndexes[1]) - 1;
 
-            edges[i - 1] = new Edge(vertices.get(index1), vertices.get(index2));
+            edges[i - 1] = new Edge(vertices.get(index1));
         }
 
         Face face = new Face(edges);

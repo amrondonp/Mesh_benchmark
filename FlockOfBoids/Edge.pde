@@ -1,8 +1,7 @@
 class Edge {
-    Vector vertex1, vertex2;
+    Vector vertex1;
 
-    Edge(Vector vertex1, Vector vertex2) {
+    Edge(Vector vertex1) {
         this.vertex1 = vertex1;
-        this.vertex2 = vertex2;
     }
 }

@@ -210,7 +210,7 @@ class Boid {
     for(Face face : this.rep.faces) {
       face.draw();
     }
-
+    
     popStyle();
   }
 }
