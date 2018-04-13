@@ -158,7 +158,7 @@ class Boid {
     int kind = TRIANGLES;
     strokeWeight(0.5);
     stroke(color(0, 255, 0));
-    fill(color(168, 168, 168, 125));
+    fill(color(168, 168, 168));
 
     // visual modes
     switch(mode) {
@@ -205,7 +205,7 @@ class Boid {
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
 
-    scale(4);
+    scale(0.03);
     
     for(Face face : this.rep.faces) {
       face.draw();

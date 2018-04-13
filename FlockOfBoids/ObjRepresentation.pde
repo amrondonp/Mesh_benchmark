@@ -50,9 +50,9 @@ class ObjRepresentation {
     }
 
     private void parseFace(String [] tokens){
-        Edge [] edges = new Edge[3];
+        Edge [] edges = new Edge[tokens.length - 1];
         
-        for(int i = 1 ; i <= 3 ; i++) {
+        for(int i = 1 ; i < tokens.length ; i++) {
             String [] vertexIndexes = tokens[i].split("/+");
             int index1 = Integer.parseInt(vertexIndexes[0]) - 1;
             int index2 = Integer.parseInt(vertexIndexes[1]) - 1;

@@ -6,7 +6,7 @@ class Face {
     }
 
     void draw() {
-        beginShape(TRIANGLES);
+        beginShape(TRIANGLE_STRIP);
         for(Edge edge : this.edges){
             vertex(edge.vertex1.x(), edge.vertex1.y(), edge.vertex1.z());
         }
