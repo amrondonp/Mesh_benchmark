@@ -6,10 +6,10 @@ class Face {
     }
 
     void draw() {
-        beginShape(TRIANGLE_STRIP);
+        beginShape();
         for(Edge edge : this.edges){
             vertex(edge.vertex1.x(), edge.vertex1.y(), edge.vertex1.z());
         }
-        endShape();
+        endShape(CLOSE);
     }
 }
