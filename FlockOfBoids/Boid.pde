@@ -156,9 +156,9 @@ class Boid {
     //scene.drawAxes(10);
 
     int kind = TRIANGLES;
-    strokeWeight(2);
+    strokeWeight(0.5);
     stroke(color(0, 255, 0));
-    fill(color(255, 0, 0, 125));
+    fill(color(168, 168, 168, 125));
 
     // visual modes
     switch(mode) {
