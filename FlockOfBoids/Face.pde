@@ -1,14 +1,14 @@
 class Face {
-    Edge [] edges;
+    Vector [] vertices;
 
-    Face(Edge [] edges) {
-        this.edges = edges;
+    Face(Vector [] vertices) {
+        this.vertices = vertices;
     }
 
     void draw() {
         beginShape();
-        for(Edge edge : this.edges){
-            vertex(edge.vertex1.x(), edge.vertex1.y(), edge.vertex1.z());
+        for(Vector v : this.vertices){
+            vertex(v.x(), v.y(), v.z());
         }
         endShape(CLOSE);
     }
