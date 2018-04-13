@@ -206,14 +206,10 @@ class Boid {
     // endShape();
 
     scale(4);
-    beginShape();
+    
     for(Face face : this.rep.faces) {
-      for(Edge edge : face.edges){
-        vertex(edge.vertex1.x(), edge.vertex1.y(), edge.vertex1.z());
-        vertex(edge.vertex2.x(), edge.vertex2.y(), edge.vertex2.z());
-      }
+      face.draw();
     }
-    endShape();
 
     popStyle();
   }
