@@ -53,7 +53,7 @@ class ObjRepresentation {
         Edge [] edges = new Edge[3];
         
         for(int i = 1 ; i <= 3 ; i++) {
-            String [] vertexIndexes = tokens[i].split("//");
+            String [] vertexIndexes = tokens[i].split("/+");
             int index1 = Integer.parseInt(vertexIndexes[0]) - 1;
             int index2 = Integer.parseInt(vertexIndexes[1]) - 1;
 
