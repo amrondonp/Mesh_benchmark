@@ -206,11 +206,8 @@ class Boid {
     // endShape();
 
     scale(0.03);
-    
-    for(Face face : this.rep.faces) {
-      face.draw();
-    }
-    
+    rep.draw();
+
     popStyle();
   }
 }
