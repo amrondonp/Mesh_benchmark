@@ -36,16 +36,23 @@ boolean avoidWalls = true;
 // 3. Only points
 int mode;
 
-int initBoidNum = 10; // amount of boids to start the program with
+int initBoidNum = 5; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
+
+PWindow window;
+
+public void settings() {
+  size(1000, 640, P3D);
+}
 
 void setup() {
   ObjRepresentation rep = new ObjRepresentation("bird.obj");
   rep.loadRepresentation();
 
-  size(1000, 800, P3D);
+  window = new PWindow();
+  
   scene = new Scene(this);
   scene.setBoundingBox(new Vector(0, 0, 0), new Vector(flockWidth, flockHeight, flockDepth));
   scene.setAnchor(scene.center());
@@ -68,6 +75,9 @@ void draw() {
   walls();
   // Calls Node.visit() on all scene nodes.
   scene.traverse();
+  window.setFrameRate(frameRate, frameCount);
+  println("frameRate = " + frameRate);
+  println("frameCount = "  + frameCount);
 }
 
 void walls() {
