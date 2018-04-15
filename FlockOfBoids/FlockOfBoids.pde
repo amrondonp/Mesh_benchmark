@@ -36,13 +36,13 @@ boolean avoidWalls = true;
 // 3. Only points
 int mode;
 
-int initBoidNum = 10; // amount of boids to start the program with
+int initBoidNum = 100; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
 
 void setup() {
-  ObjRepresentation rep = new ObjRepresentation("bird.obj");
+  ObjRepresentation rep = new ObjRepresentation("cube.obj");
   rep.loadRepresentation();
   VertexVertex rep2 = new VertexVertex(rep);
 

@@ -10,11 +10,9 @@ public class VertexVertex implements IRepresentation{
     vertex = new ArrayList<Vector>();
     for(Face f : obj.faces ){
       List<Vector> verticesTmp = new ArrayList(); 
-      for(Edge edge : f.edges){
-        if( !belongTo(verticesTmp, edge.vertex1) )
-          verticesTmp.add(edge.vertex1);
-        if( !belongTo(verticesTmp, edge.vertex2) )
-          verticesTmp.add(edge.vertex2);
+      for(Vector v : f.vertices){
+        if( !belongTo(verticesTmp, v) )
+          verticesTmp.add(v);
       }
       for(Vector v : verticesTmp){
         vertex.add(v);

@@ -9,12 +9,6 @@ class ObjRepresentation implements IRepresentation{
         faces = new ArrayList<Face>();
     }
 
-    void draw() {
-        for(Face face : this.faces) {
-            face.draw();
-        }
-    }
-
     private void loadRepresentation() {
         BufferedReader bf = createReader(this.file); 
         try{
@@ -71,13 +65,8 @@ class ObjRepresentation implements IRepresentation{
 
     @Override
     public void pintar(float sc){
-        beginShape();
         for(Face face : this.faces) {
-        for(Edge edge : face.edges){
-            vertex(edge.vertex1.x() * sc , edge.vertex1.y() * sc, edge.vertex1.z() * sc );
-            vertex(edge.vertex2.x() * sc , edge.vertex2.y() * sc, edge.vertex2.z() * sc );
+            face.draw(sc);
         }
-        }
-        endShape();
     }
 }
