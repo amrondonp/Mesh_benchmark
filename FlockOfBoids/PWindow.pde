@@ -28,13 +28,17 @@ class PWindow extends PApplet {
   void draw() {
         
         stroke(255,0,0);
-        line(framecount-1, height-lastFrameY, framecount, height-framerate);
+        line(millis()/1000 -1 , height-lastFrameY, millis()/1000, height-framerate);
+
+        stroke(0,0,0);
+        line(framecount -1 , height-lastFrameY, framecount, height-framerate);
         lastFrameY = framerate;
 
         pgFps.beginDraw();
         pgFps.background(188);
         pgFps.fill(0);
         pgFps.text("FPS : " + framerate,0, 20);
+        pgFps.text("Seconds : " + millis()/1000, width/2, 20);
         pgFps.endDraw();
         image(pgFps, 0,0);
   }

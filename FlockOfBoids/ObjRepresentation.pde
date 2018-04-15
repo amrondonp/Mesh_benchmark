@@ -9,11 +9,6 @@ class ObjRepresentation implements IRepresentation{
         faces = new ArrayList<Face>();
     }
 
-    void draw() {
-        for(Face face : this.faces) {
-            face.draw();
-        }
-    }
 
     private void loadRepresentation() {
         BufferedReader bf = createReader(this.file); 

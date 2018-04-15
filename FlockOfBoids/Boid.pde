@@ -8,11 +8,10 @@ class Boid {
   float neighborhoodRadius; // radius in which it looks for fellow boids
   float maxSpeed = 4; // maximum magnitude for the velocity vector
   float maxSteerForce = .1f; // maximum magnitude of the steering vector
-  float sc = 4; // scale factor for the render of the boid
+  float sc = 6; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
   IRepresentation rep;
-  
 
 
   Boid(Vector inPos, IRepresentation rep) {
@@ -204,9 +203,8 @@ class Boid {
     // vertex(-3 * sc, 2 * sc, 0);
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
-
+    
     rep.pintar(sc);
-
     popStyle();
   }
 }

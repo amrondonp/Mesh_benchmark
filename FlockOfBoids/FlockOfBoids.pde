@@ -36,6 +36,9 @@ boolean avoidWalls = true;
 // 3. Only points
 int mode;
 
+// 1 for face-vertex representation, 2 for vertex-vertex representation
+int representation = 2;
+
 int initBoidNum = 100; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
@@ -48,9 +51,6 @@ public void settings() {
 }
 
 void setup() {
-  ObjRepresentation rep = new ObjRepresentation("bird.obj");
-  rep.loadRepresentation();
-  VertexVertex rep2 = new VertexVertex(rep);
 
   window = new PWindow();
   
@@ -64,12 +64,21 @@ void setup() {
   scene.setDefaultGrabber(eye);
   scene.fitBall();
   // create and fill the list of boids
+ 
+  ObjRepresentation rep = new ObjRepresentation("cube.obj");
+  rep.loadRepresentation();
+  VertexVertex rep2 = new VertexVertex(rep);
   flock = new ArrayList();
-  for (int i = 0; i < initBoidNum; i++)
-    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep2));
+  if( representation == 1)
+    for (int i = 0; i < initBoidNum; i++)
+      flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep));
+    else
+      for (int i = 0; i < initBoidNum; i++)
+        flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep2));
 }
 
 void draw() {
+  
   background(0);
   ambientLight(128, 128, 128);
   directionalLight(255, 255, 255, 0, 1, -100);
