@@ -59,7 +59,7 @@ void setup() {
   // create and fill the list of boids
   flock = new ArrayList();
   for (int i = 0; i < initBoidNum; i++)
-    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep));
+    flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep2));
 }
 
 void draw() {

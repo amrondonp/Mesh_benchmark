@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class VertexVertex {
+public class VertexVertex implements IRepresentation{
 
   private List<Vector> vertex;
 
@@ -34,5 +34,12 @@ public class VertexVertex {
     return false;
   }
 
+  public void pintar(float sc){
+    beginShape();
+    for(Vector v : this.vertex) {
+      vertex( v.x() * sc, v.y() * sc, v.z() * sc );
+    }
+    endShape();
+  }
 
 }
