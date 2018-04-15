@@ -70,4 +70,14 @@ class ObjRepresentation implements IRepresentation{
             face.draw(sc);
         }
     }
+
+    @Override
+    public List<PShape> getShape(PShape boidShape, float sc){
+        List<PShape> facePshape = new ArrayList();
+        for(Face face : this.faces) {
+            facePshape.add( face.getShape(boidShape, sc));
+        }
+        return facePshape;
+    }
+
 }

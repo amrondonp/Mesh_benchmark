@@ -39,5 +39,16 @@ public class VertexVertex implements IRepresentation{
     }
     endShape();
   }
-
+  /* Method for retained mode */
+  public List<PShape> getShape( PShape boidShape , float sc){
+    List<PShape> ps = new ArrayList();
+    boidShape.beginShape();
+    boidShape.stroke(255,0,0);
+    for(Vector v : this.vertex) {
+      boidShape.vertex( v.x() * sc, v.y() * sc, v.z() * sc );
+    }
+    boidShape.endShape();
+    ps.add(boidShape);
+    return ps;
+    }
 }

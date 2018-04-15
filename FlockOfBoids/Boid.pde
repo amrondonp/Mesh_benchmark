@@ -11,11 +11,21 @@ class Boid {
   float sc = 6; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
+
   IRepresentation rep;
-
-
-  Boid(Vector inPos, IRepresentation rep) {
+  PShape boidShape;
+  List<PShape> boidShapeList;
+  boolean retained;
+  Boid(Vector inPos, IRepresentation rep, boolean retained) {
     this.rep = rep;
+    this.retained = retained;    
+    if( retained ){
+      this.boidShape = boidShape = createShape();
+      boidShapeList = new ArrayList();
+      boidShapeList = rep.getShape(boidShape, sc);
+
+    }
+
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
     position = new Vector();
@@ -203,8 +213,13 @@ class Boid {
     // vertex(-3 * sc, 2 * sc, 0);
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
-    
-    rep.pintar(sc);
+
+    if( retained )
+      for( PShape pshape : this.boidShapeList )
+        shape(pshape);
+    else{
+      rep.pintar(sc);
+    }
     popStyle();
   }
 }

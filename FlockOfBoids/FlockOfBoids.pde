@@ -37,14 +37,18 @@ boolean avoidWalls = true;
 int mode;
 
 // 1 for face-vertex representation, 2 for vertex-vertex representation
-int representation = 2;
+int representation = 1;
 
-int initBoidNum = 100; // amount of boids to start the program with
+// Retained mode, or inmediate mode
+boolean retained = false;
+int initBoidNum = 800; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
 
 PWindow window;
+/* PShape object for retained mode*/
+PShape boidShape;
 
 public void settings() {
   size(1000, 640, P3D);
@@ -68,13 +72,16 @@ void setup() {
   ObjRepresentation rep = new ObjRepresentation("cube.obj");
   rep.loadRepresentation();
   VertexVertex rep2 = new VertexVertex(rep);
+
+
   flock = new ArrayList();
   if( representation == 1)
     for (int i = 0; i < initBoidNum; i++)
-      flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep));
+      flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep,retained));
     else
       for (int i = 0; i < initBoidNum; i++)
-        flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep2));
+        flock.add(new Boid(new Vector(flockWidth / 2, flockHeight / 2, flockDepth / 2), rep2,retained));
+  
 }
 
 void draw() {
@@ -85,9 +92,8 @@ void draw() {
   walls();
   // Calls Node.visit() on all scene nodes.
   scene.traverse();
-  window.setFrameRate(frameRate, frameCount);
-  println("frameRate = " + frameRate);
-  println("frameCount = "  + frameCount);
+  window.setVariables(frameRate, frameCount, retained, representation,initBoidNum);
+
 }
 
 void walls() {
