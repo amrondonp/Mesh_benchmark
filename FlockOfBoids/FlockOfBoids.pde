@@ -45,7 +45,6 @@ void setup() {
   ObjRepresentation rep = new ObjRepresentation("cube.obj");
   rep.loadRepresentation();
   VertexVertex rep2 = new VertexVertex(rep);
-  rep2.getFaces();
 
   size(1000, 800, P3D);
   scene = new Scene(this);

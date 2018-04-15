@@ -1,4 +1,4 @@
-class ObjRepresentation {    
+class ObjRepresentation implements IRepresentation{    
     ArrayList<Vector> vertices;
     ArrayList<Face> faces;
     String file;
@@ -62,5 +62,17 @@ class ObjRepresentation {
 
         Face face = new Face(edges);
         faces.add(face);
+    }
+
+    @Override
+    public void pintar(float sc){
+        beginShape();
+        for(Face face : this.faces) {
+        for(Edge edge : face.edges){
+            vertex(edge.vertex1.x() * sc , edge.vertex1.y() * sc, edge.vertex1.z() * sc );
+            vertex(edge.vertex2.x() * sc , edge.vertex2.y() * sc, edge.vertex2.z() * sc );
+        }
+        }
+        endShape();
     }
 }

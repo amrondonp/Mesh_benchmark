@@ -11,11 +11,11 @@ class Boid {
   float sc = 3; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
-  ObjRepresentation rep;
+  IRepresentation rep;
   
 
 
-  Boid(Vector inPos, ObjRepresentation rep) {
+  Boid(Vector inPos, IRepresentation rep) {
     this.rep = rep;
     grabsMouseColor = color(0, 0, 255);
     avatarColor = color(255, 255, 0);
@@ -205,15 +205,7 @@ class Boid {
     // vertex(-3 * sc, -2 * sc, 0);
     // endShape();
 
-    scale(4);
-    beginShape();
-    for(Face face : this.rep.faces) {
-      for(Edge edge : face.edges){
-        vertex(edge.vertex1.x(), edge.vertex1.y(), edge.vertex1.z());
-        vertex(edge.vertex2.x(), edge.vertex2.y(), edge.vertex2.z());
-      }
-    }
-    endShape();
+    rep.pintar(sc);
 
     popStyle();
   }
