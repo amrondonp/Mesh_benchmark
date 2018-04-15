@@ -9,6 +9,12 @@ class ObjRepresentation implements IRepresentation{
         faces = new ArrayList<Face>();
     }
 
+    void draw() {
+        for(Face face : this.faces) {
+            face.draw();
+        }
+    }
+
     private void loadRepresentation() {
         BufferedReader bf = createReader(this.file); 
         try{
@@ -50,17 +56,16 @@ class ObjRepresentation implements IRepresentation{
     }
 
     private void parseFace(String [] tokens){
-        Edge [] edges = new Edge[3];
+        Vector [] faceVertices = new Vector[tokens.length - 1];
         
-        for(int i = 1 ; i <= 3 ; i++) {
-            String [] vertexIndexes = tokens[i].split("//");
+        for(int i = 1 ; i < tokens.length ; i++) {
+            String [] vertexIndexes = tokens[i].split("/+");
             int index1 = Integer.parseInt(vertexIndexes[0]) - 1;
-            int index2 = Integer.parseInt(vertexIndexes[1]) - 1;
 
-            edges[i - 1] = new Edge(vertices.get(index1), vertices.get(index2));
+            faceVertices[i - 1] = vertices.get(index1);
         }
 
-        Face face = new Face(edges);
+        Face face = new Face(faceVertices);
         faces.add(face);
     }
 
