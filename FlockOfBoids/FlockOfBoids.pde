@@ -37,11 +37,12 @@ boolean avoidWalls = true;
 int mode;
 
 // 1 for face-vertex representation, 2 for vertex-vertex representation
-int representation = 1;
+int representation = 2;
 
-// Retained mode, or inmediate mode
-boolean retained = false;
-int initBoidNum = 10; // amount of boids to start the program with
+// Retained mode, or immediate mode
+boolean retained = true;
+
+int initBoidNum = 2000; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
@@ -69,7 +70,7 @@ void setup() {
   scene.fitBall();
   // create and fill the list of boids
  
-  ObjRepresentation rep = new ObjRepresentation("bird.obj");
+  ObjRepresentation rep = new ObjRepresentation("cube.obj");
   rep.loadRepresentation();
   VertexVertex rep2 = new VertexVertex(rep);
 

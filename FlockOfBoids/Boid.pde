@@ -8,7 +8,7 @@ class Boid {
   float neighborhoodRadius; // radius in which it looks for fellow boids
   float maxSpeed = 4; // maximum magnitude for the velocity vector
   float maxSteerForce = .1f; // maximum magnitude of the steering vector
-  float sc = 0.06; // scale factor for the render of the boid
+  float sc = 10; // scale factor for the render of the boid
   float flap = 0;
   float t = 0;
 

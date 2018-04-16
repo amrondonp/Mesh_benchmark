@@ -8,10 +8,41 @@ Estudiar la relación entre las [aplicaciones de mallas poligonales](https://git
 
 Hacer un benchmark (midiendo los *fps* promedio) de varias representaciones de mallas poligonales para los _boids_ del ejemplo del [FlockOfBoids](https://github.com/VisualComputing/framesjs/tree/processing/examples/Advanced/FlockOfBoids) (requiere la librería [frames](https://github.com/VisualComputing/framesjs/releases), versión ≥ 0.1.0), tanto en modo inmediato como retenido de rendering.
 
+
 1. Represente la malla del [boid](https://github.com/VisualComputing/framesjs/blob/processing/examples/Advanced/FlockOfBoids/Boid.pde) al menos de tres formas distintas.
 2. Renderice el _flock_ en modo inmediato y retenido, implementando la función ```render()``` del [boid](https://github.com/VisualComputing/framesjs/blob/processing/examples/Advanced/FlockOfBoids/Boid.pde).
 3. Haga un benchmark que muestre una comparativa de los resultados obtenidos.
 
+### Desarrollo
+1. Para la representación de la malla se implementaron las formas ``` Face-vertex ``` y ``` Vertex-Vertex```
+
+2. Para las representaciones mencionadas anteriormente se implementarion los modos _inmediato_ y _retenido_ requeridos.
+
+3. Para realizar la comparativa se definieron las siguientes pruebas a realizar:
+
+    * Para cada modo ( _inmediato_ y _retenido_ )
+        * Por cada representación ( _face-vertex_ y _vertex_vertex_ )
+            * Realizar una prueba con los valores de _n_ E { 250,500,1000,2000 }, donde _n_ es el número de boids.
+
+
+    Se obtuvieron los siguientes resultados:
+
+    En la primera máquina que se ejecutó la cual tenía las siguietes características:
+
+*   Memory: 7.6 GiB
+* Processor Intel(R) Core(TM) i5-3337U CPU @ 1.80GHz
+* Graphics: NVIDIA Corporation GK208M [GeForce GT 720M] 
+* OS Type: 64 - bit
+* OS: Fedora release 27 (Twenty Seven)
+* Openjdk version 1.8.0_162
+
+| num boids | Immediate   | Immediate     | Retained    | Retained      |
+|-----------|-------------|---------------|-------------|---------------|
+|        #    | Face-vertex | Vertex-Vertex | Face-vertex | Vertex-Vertex |
+|    252    |     44.1    |       59      |     7.3     |       57      |
+|    500    |      18     |       27      |     3.7     |      26.5     |
+|    1000   |     8.3     |       11      |     1.7     |       10      |
+|    2000   |     3.1     |      4.3      |     0.9     |      3.3      |
 ### Opcionales
 
 1. Realice la comparativa para diferentes configuraciones de hardware.
@@ -39,7 +70,10 @@ Complete la tabla:
 
 | Integrante | github nick |
 |------------|-------------|
-|            |             |
+|Andres Rondon| [amrondonp](https://github.com/amrondonp)             |
+|Raul Ramirez| [raulramirezp](https://github.com/raulramirezp)             |
+|Juan Carlos Gama| [JuanCarlosUNAL](https://github.com/JuanCarlosUNAL)             |
+
 
 ## Entrega
 

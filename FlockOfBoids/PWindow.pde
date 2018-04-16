@@ -59,7 +59,7 @@ class PWindow extends PApplet {
         if( retained )
           pgFps.text( "Run in retained mode:" , width/2, 40);
         else 
-           pgFps.text( "Run in inmediate mode", width/2, 40);
+           pgFps.text( "Run in immediate mode", width/2, 40);
         if( representation == 1 )
           pgFps.text( "Representation face - vertex:" , 0, 40);
         else 
