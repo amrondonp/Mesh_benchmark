@@ -36,13 +36,36 @@ Hacer un benchmark (midiendo los *fps* promedio) de varias representaciones de m
 * OS: Fedora release 27 (Twenty Seven)
 * Openjdk version 1.8.0_162
 
+
 | num boids | Immediate   | Immediate     | Retained    | Retained      |
 |-----------|-------------|---------------|-------------|---------------|
 |        #    | Face-vertex | Vertex-Vertex | Face-vertex | Vertex-Vertex |
-|    252    |     44.1    |       59      |     7.3     |       57      |
+|    250    |     44.1    |       59      |     7.3     |       57      |
 |    500    |      18     |       27      |     3.7     |      26.5     |
 |    1000   |     8.3     |       11      |     1.7     |       10      |
 |    2000   |     3.1     |      4.3      |     0.9     |      3.3      |
+
+
+En la segunda máquina, que tenia las siguientes características
+
+* Memory: 5,7 GiB
+* Processor Intel® Core™ i5-2430M CPU @ 2.40GHz × 4
+* Graphics: Intel® Sandybridge Mobile
+* OS Type: 64 - bit
+* OS: Ubuntu 16.04 LTS
+* Java version "1.8.0_161"
+
+Se obtivuieron los siguientes resultados
+
+| num boids | Immediate   | Immediate     | Retained    | Retained      |
+|-----------|-------------|---------------|-------------|---------------|
+|        #    | Face-vertex | Vertex-Vertex | Face-vertex | Vertex-Vertex |
+|    250    |     28    |       42      |     7.8     |       38      |
+|    500    |      14     |       19.5      |     3.6     |      20     |
+|    1000   |     5     |       7      |     1.7     |       6      |
+|    2000   |     2     |      3.7      |     0     |      2.5      |
+
+
 ### Opcionales
 
 1. Realice la comparativa para diferentes configuraciones de hardware.
