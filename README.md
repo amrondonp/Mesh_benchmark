@@ -65,6 +65,17 @@ Se obtivuieron los siguientes resultados
 |    1000   |     5     |       7      |     1.7     |       6      |
 |    2000   |     2     |      3.7      |     0     |      2.5      |
 
+## Conclusiones
+
+* Podemos observar que la implementación del Vertex-vertex vencía a la del face-vertex en ambos modos (Inmediato y retenido).
+* Una explicación a esto es que la representación vertex-vertex contiene menos información de la figura, por lo que cuando se renderiza solo debe hacerlo para los vértices , mientras que la representación Face-vertex, adicionalmente pinta por completo el objeto.
+
+* Se puede observar que hay una relación casi proporcional ( valor anterior / 2 ) en los fps obtenidos y la cantidad de boids pintados, con lo cual podemos deducir posibles valores esperados para próximos valores de num_boids
+
+* Es evidente que los resultados obtenidos también son muy dependientes de las características de hardware, y quizá, de software del dispositivo en el cual se esté ejecutando este modelo.
+
+* Contrario a la idea que teníamos previo a la realización de taller, el modelo en modo inmediato obtuvo un mejor desempeño con respecto al modo retenido, aunque esto puede también ser muy dependiente de la implementación que se realizó de los modos de representación del boid
+
 
 ### Opcionales
 
