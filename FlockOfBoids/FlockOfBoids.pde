@@ -41,7 +41,7 @@ int representation = 1;
 
 // Retained mode, or inmediate mode
 boolean retained = false;
-int initBoidNum = 800; // amount of boids to start the program with
+int initBoidNum = 10; // amount of boids to start the program with
 ArrayList<Boid> flock;
 Node avatar;
 boolean animate = true;
@@ -69,7 +69,7 @@ void setup() {
   scene.fitBall();
   // create and fill the list of boids
  
-  ObjRepresentation rep = new ObjRepresentation("cube.obj");
+  ObjRepresentation rep = new ObjRepresentation("bird.obj");
   rep.loadRepresentation();
   VertexVertex rep2 = new VertexVertex(rep);
 
